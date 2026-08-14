@@ -13,13 +13,13 @@ android {
     namespace = "net.thunderbird.android"
 
     defaultConfig {
-        applicationId = "net.thunderbird.android"
-        testApplicationId = "net.thunderbird.android.tests"
+        applicationId = "com.kimjb.kjbmail"
+        testApplicationId = "com.kimjb.kjbmail.tests"
 
         versionCode = 4
         versionName = "23.0"
 
-        buildConfigField("String", "CLIENT_INFO_APP_NAME", "\"Thunderbird for Android\"")
+        buildConfigField("String", "CLIENT_INFO_APP_NAME", "\"KJB Mail\"")
     }
 
     androidResources {

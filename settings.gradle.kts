@@ -76,6 +76,7 @@ include(
 
 include(
     ":app-common",
+    ":mail-host",
 )
 
 include(

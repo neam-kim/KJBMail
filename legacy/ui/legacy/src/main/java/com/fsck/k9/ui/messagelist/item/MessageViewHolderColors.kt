@@ -42,11 +42,13 @@ data class MessageViewHolderColors(
                 selectedBackground = theme.resolveColorAttribute(MaterialR.attr.colorSurfaceVariant),
                 regular = theme.resolveColorAttribute(MaterialR.attr.colorOnSurface),
                 regularBackground = theme.resolveColorAttribute(MaterialR.attr.colorSurface),
-                read = theme.resolveColorAttribute(MaterialR.attr.colorOutline),
+                // Read messages must remain readable on the KJB Mail dark surface.
+                // `colorOutline` is reserved for borders and is intentionally too dark for text.
+                read = theme.resolveColorAttribute(MaterialR.attr.colorOnSurface),
                 readBackground = theme.resolveColorAttribute(MaterialR.attr.colorSurfaceContainerHigh),
                 unread = theme.resolveColorAttribute(MaterialR.attr.colorOnSurface),
                 unreadBackground = theme.resolveColorAttribute(MaterialR.attr.colorSurface),
-                previewText = theme.resolveColorAttribute(MaterialR.attr.colorOutline),
+                previewText = theme.resolveColorAttribute(MaterialR.attr.colorOnSurfaceVariant),
                 previewActiveText = theme.resolveColorAttribute(MaterialR.attr.colorOnSecondary),
                 previewSelectedText = theme.resolveColorAttribute(MaterialR.attr.colorOnSurfaceVariant),
             )
