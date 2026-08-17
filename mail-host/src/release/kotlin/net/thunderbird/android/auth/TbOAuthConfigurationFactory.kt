@@ -33,21 +33,30 @@ class TbOAuthConfigurationFactory : OAuthConfigurationFactory {
         redirectUri = "$REDIRECT_SCHEME://oauth2redirect",
     )
 
-    private fun createGmailConfiguration() = listOf("imap.gmail.com", "imap.googlemail.com", "smtp.gmail.com", "smtp.googlemail.com") to OAuthConfiguration(
-        clientId = "560629489500-no2mlau7e4vn3psh5esaiodgri09jrj9.apps.googleusercontent.com",
-        scopes = listOf("https://mail.google.com/"),
-        authorizationEndpoint = "https://accounts.google.com/o/oauth2/v2/auth",
-        tokenEndpoint = "https://oauth2.googleapis.com/token",
-        redirectUri = "$REDIRECT_SCHEME:/oauth2redirect",
-    )
+    private fun createGmailConfiguration() =
+        listOf("imap.gmail.com", "imap.googlemail.com", "smtp.gmail.com", "smtp.googlemail.com") to OAuthConfiguration(
+            clientId = "560629489500-no2mlau7e4vn3psh5esaiodgri09jrj9.apps.googleusercontent.com",
+            scopes = listOf("https://mail.google.com/"),
+            authorizationEndpoint = "https://accounts.google.com/o/oauth2/v2/auth",
+            tokenEndpoint = "https://oauth2.googleapis.com/token",
+            redirectUri = "$REDIRECT_SCHEME:/oauth2redirect",
+        )
 
-    private fun createMicrosoftConfiguration() = listOf("outlook.office365.com", "smtp.office365.com", "smtp-mail.outlook.com") to OAuthConfiguration(
-        clientId = "e6f8716e-299d-4ed9-bbf3-453f192f44e5",
-        scopes = listOf("profile", "openid", "email", "https://outlook.office.com/IMAP.AccessAsUser.All", "https://outlook.office.com/SMTP.Send", "offline_access"),
-        authorizationEndpoint = "https://login.microsoftonline.com/common/oauth2/v2.0/authorize",
-        tokenEndpoint = "https://login.microsoftonline.com/common/oauth2/v2.0/token",
-        redirectUri = "msauth://dev.herdr.mobile/eaXDuh6T3KFWjcJhsoaObT9OayU%3D",
-    )
+    private fun createMicrosoftConfiguration() =
+        listOf("outlook.office365.com", "smtp.office365.com", "smtp-mail.outlook.com") to OAuthConfiguration(
+            clientId = "e6f8716e-299d-4ed9-bbf3-453f192f44e5",
+            scopes = listOf(
+                "profile",
+                "openid",
+                "email",
+                "https://outlook.office.com/IMAP.AccessAsUser.All",
+                "https://outlook.office.com/SMTP.Send",
+                "offline_access",
+            ),
+            authorizationEndpoint = "https://login.microsoftonline.com/common/oauth2/v2.0/authorize",
+            tokenEndpoint = "https://login.microsoftonline.com/common/oauth2/v2.0/token",
+            redirectUri = "msauth://dev.herdr.mobile/eaXDuh6T3KFWjcJhsoaObT9OayU%3D",
+        )
 
     private fun createYahooConfiguration() = listOf("imap.mail.yahoo.com", "smtp.mail.yahoo.com") to OAuthConfiguration(
         clientId = "dj0yJmk9bXRhTkZod2xmY3JrJmQ9WVdrOVUyUTRXRGQ0Tlc4bWNHbzlNQT09JnM9Y29uc3VtZXJzZWNyZXQmc3Y9MCZ4PTkx",

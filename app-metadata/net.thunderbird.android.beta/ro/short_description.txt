@@ -1,1 +1,1 @@
-Thunderbird: aplicație de poștă cu cod-sursă deschis, axată pe confidențialitate
+KJBMail: aplicație de poștă cu cod-sursă deschis, axată pe confidențialitate

@@ -19,7 +19,7 @@ android {
         versionCode = 4
         versionName = "23.0"
 
-        buildConfigField("String", "CLIENT_INFO_APP_NAME", "\"KJB Mail\"")
+        buildConfigField("String", "CLIENT_INFO_APP_NAME", "\"KJBMail\"")
     }
 
     androidResources {

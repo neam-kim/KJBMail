@@ -1,6 +1,7 @@
 ---
 name: Shippable Build & Signing
 on:
+  # KJBMail is source-only until its own signing and publishing infrastructure is approved.
   workflow_call:
   workflow_dispatch:
     inputs:
@@ -37,6 +38,7 @@ permissions:
 
 jobs:
   get_environment:
+    if: ${{ inputs.enablePublishing == true }}
     name: Determine Release Environment
     runs-on: ubuntu-latest
     outputs:

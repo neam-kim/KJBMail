@@ -4,7 +4,7 @@
 - Përmirësim importimi rregullimesh, gjatë ujdisjes së llogarisë
 - Përmirësim UI/UX ujdisjeje llogarie
 - Përmirësim shfaqjeje ujdisjesh llogarish në ekrane të vegjël
-- Përmirësim UI/UX për përpunim rregullimesh shërbyesi llogarish 
+- Përmirësim UI/UX për përpunim rregullimesh shërbyesi llogarish
 - Ndreqje vithisje AlarmManager në Android 14
 - Ndryshime të brendshme
 - Përditësim përkthimesh

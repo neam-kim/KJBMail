@@ -6,7 +6,7 @@ import net.thunderbird.app.common.BaseApplication
 import org.koin.android.ext.android.inject
 import org.koin.core.module.Module
 
-/** Host boundary for native KJB Mail inside the unified KimJB application. */
+/** Host boundary for native KJBMail inside the unified KimJB application. */
 class ThunderbirdApp : BaseApplication() {
     private val telemetryManager: TelemetryManager by inject()
 

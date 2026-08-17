@@ -2,8 +2,8 @@ package net.thunderbird.android
 
 import android.content.Intent
 import android.os.Bundle
-import net.thunderbird.app.common.startup.StartupRouter
 import com.fsck.k9.ui.base.BaseActivity
+import net.thunderbird.app.common.startup.StartupRouter
 import org.koin.android.ext.android.inject
 
 /**

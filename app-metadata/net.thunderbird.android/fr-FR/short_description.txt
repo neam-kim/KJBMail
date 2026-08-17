@@ -1,1 +1,1 @@
-Thunderbird, une appli de courriel à code source ouvert qui protège vos données.
+KJBMail, une appli de courriel à code source ouvert qui protège vos données.

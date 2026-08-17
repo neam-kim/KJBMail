@@ -1,100 +1,62 @@
-# Thunderbird for Android
+# KJBMail
 
-<a href="https://play.google.com/store/apps/details?id=net.thunderbird.android&referrer=utm_campaign%3Dandroid_metadata%26utm_medium%3Dweb%26utm_source%3Dgithub.com%26utm_content%3Dbadge" target="_blank"><img src="./docs/assets/get-it-on-play.png" alt="Get it on Google Play" height="28"></a>
-<a href="https://f-droid.org/packages/net.thunderbird.android"><img src="./docs/assets/get-it-on-fdroid.png" alt="Get it on F-Droid" height="28"></a>
-<a href="https://apps.obtainium.imranr.dev/"><img src="./docs/assets/get-it-on-obtainium.png" alt="Get it on Obtainium" height="28"></a>
-[![Latest release](https://img.shields.io/github/release/thunderbird/thunderbird-android.svg?style=for-the-badge&filter=THUNDERBIRD_*&logo=thunderbird)](https://github.com/thunderbird/thunderbird-android/releases/latest)
-[![Latest beta release](https://img.shields.io/github/release/thunderbird/thunderbird-android.svg?include_prereleases&style=for-the-badge&label=beta&filter=THUNDERBIRD_*b*&logo=thunderbird)](https://github.com/thunderbird/thunderbird-android/releases)
+[![Latest release](https://img.shields.io/github/v/release/neam-kim/KJBMail?style=for-the-badge)](https://github.com/neam-kim/KJBMail/releases/latest)
+[![License](https://img.shields.io/github/license/neam-kim/KJBMail)](LICENSE)
+[![Issues](https://img.shields.io/github/issues/neam-kim/KJBMail)](https://github.com/neam-kim/KJBMail/issues)
 
-Thunderbird for Android is a powerful, privacy-focused email app. Effortlessly manage multiple email accounts from one app, with a Unified Inbox option for maximum productivity. Built on open-source technology and supported by a dedicated team of developers alongside a global community of volunteers, Thunderbird never treats your private data as a product.
+KJBMail is an open-source Android email client focused on private, user-controlled mail. It can manage multiple accounts and supports the mail protocols and account providers implemented in this repository, including IMAP and POP3. Available functionality must be verified in the app and release notes; this fork does not promise services that are not implemented here.
 
-Thunderbird for Android is based on K-9 Mail, which comes with a rich history of success and functionality in open source email.
+## Project status and downloads
 
-## Download
+KJBMail is developed in the [`neam-kim/KJBMail`](https://github.com/neam-kim/KJBMail) repository. Releases, checksums, known issues, and support requests are published there:
 
-Thunderbird for Android can be downloaded from a couple of sources:
+- [Releases](https://github.com/neam-kim/KJBMail/releases)
+- [Issues and feature requests](https://github.com/neam-kim/KJBMail/issues)
+- [Security reporting](SECURITY.md)
 
-- Thunderbird on [Google Play](https://play.google.com/store/apps/details?id=net.thunderbird.android&referrer=utm_campaign%3Dandroid_metadata%26utm_medium%3Dweb%26utm_source%3Dgithub.com%26utm_content%3Dlink) or [F-Droid](https://f-droid.org/packages/net.thunderbird.android)
-- Thunderbird Beta on [Google Play](https://play.google.com/store/apps/details?id=net.thunderbird.android.beta&referrer=utm_campaign%3Dandroid_metadata%26utm_medium%3Dweb%26utm_source%3Dgithub.com%26utm_content%3Dlink) or [F-Droid](https://f-droid.org/packages/net.thunderbird.android.beta)
-- [Github Releases](https://github.com/thunderbird/thunderbird-android/releases)
-- [FFUpdater](https://f-droid.org/packages/de.marmaro.krt.ffupdater/) allows installing the latest versions from ftp.mozilla.org
-- [Obtainium](https://obtainium.imranr.dev/): Use "Filter release title by regular expression" under "Additional options" with `Thunderbird`. More info in [Complex Obtainium Apps list](https://apps.obtainium.imranr.dev/).
+There are no KJBMail store listings or release channels documented here until they are published by this project. Do not install a build from an upstream listing and assume it is a KJBMail build.
 
-By using Thunderbird for Android Beta, you have early access to current development and are able to try new features earlier.
+## Repository structure
 
-Check out the [Release Notes](https://github.com/thunderbird/thunderbird-android/releases) to find out what changed in each version of Thunderbird for Android.
+- `app-thunderbird`: KJBMail application entry point and product wiring (the module name is retained for compatibility).
+- `app-common`: shared application integration and dependency wiring.
+- `feature`, `core`, `components`, `mail`, `backend`: user-facing features, shared infrastructure, UI, and mail protocol implementations.
+- `mail-host`: KJBMail host/branding resources and application metadata used by the product build.
+- `app-k9mail` and `legacy`: retained upstream-compatible application and legacy code; they are not the KJBMail product identity.
+- `docs`: engineering, architecture, contributor, release, and user documentation.
 
-The SHA-256 fingerprints for our signing certificates are available in [SECURITY.md](./SECURITY.md#verifying-fingerprints).
+## Building and developing
 
-## Need Help? Found a bug? Have an idea? Want to chat?
+A recent Android development environment is required:
 
-If the app is not behaving like it should, or you are not sure if you've encountered a bug:
+- JDK 21 or newer (the build rejects older Java versions).
+- Android SDK installed, with the SDK/platform and build-tools versions selected by the Gradle configuration.
+- macOS, Linux, or Windows with enough disk space for Gradle and Android dependencies.
 
-- Check out our [knowledge base](https://support.mozilla.org/products/thunderbird-android) and [frequently asked questions](https://support.mozilla.org/kb/thunderbird-android-8-faq)
-- Ask a question on our [support forum](https://support.mozilla.org/en-US/questions/new/thunderbird-android)
+From the repository root:
 
-If you are certain you've identified a bug in Thunderbird for Android and would like to help fix it:
+```bash
+./gradlew :app-thunderbird:assembleDebug
+./gradlew test
+./gradlew lint detekt spotlessCheck
+```
 
-- File an issue on [our GitHub issue tracker](https://github.com/thunderbird/thunderbird-android/issues)
+Use `./gradlew tasks` to discover additional tasks. Do not commit generated build output, signing keys, OAuth credentials, or personal mail data.
 
-If you have an idea how to improve Thunderbird for Android:
+## Fork and OAuth configuration
 
-- Tell us about and vote on your feature ideas on [connect.mozilla.org](https://connect.mozilla.org/t5/ideas/idb-p/ideas/label-name/thunderbird%20android).
-- Join the discussion about the latest changes in the [Thunderbird Android Beta Topicbox](https://thunderbird.topicbox.com/groups/android-beta).
+A KJBMail fork must use its own OAuth client registration and a redirect URI that is different from the upstream and other installed applications. Configure the OAuth factories for the product's debug and release variants in the relevant `app-thunderbird` source sets. Keep client identifiers and secrets in local/CI secret configuration; never commit them. A fork also needs its own application ID, signing certificate, store listing, and release process before public distribution. The existing package and namespace identifiers are intentionally retained for compatibility and are not a branding claim.
 
-The Thunderbird Community uses Matrix to communicate:
+## Privacy and security
 
-- General chat about Thunderbird for Android and K-9 Mail: [#tb-android:mozilla.org](https://matrix.to/#/#tb-android:mozilla.org)
-- Development and other ways to contribute: [#tb-android-dev:mozilla.org](https://matrix.to/#/#tb-android-dev:mozilla.org)
-- Reach the broader Thunderbird Community in the [community space](https://matrix.to/#/#thunderbird-community:mozilla.org)
+KJBMail is intended to keep mail access under the user's control. Credentials, tokens, and message contents must not be logged or sent to an analytics service. Mail is transferred to the configured providers using the protocols and security settings supported by the app; provider terms and server configuration still apply. Review [SECURITY.md](SECURITY.md) before reporting a vulnerability. This repository is not a substitute for a separately published legal privacy notice; any public distribution should provide one describing its data handling and contact details.
 
-## Roadmap
+## Upstream relationship and attribution
 
-To learn more about all the wonderful things planned for this year please see our
-[roadmap](https://github.com/orgs/thunderbird/projects/19/views/1). The core team's day to day activities are additionally
-tracked in our [sprint board](https://github.com/orgs/thunderbird/projects/20/views/1).
+KJBMail is a fork/derivative work of the open-source Thunderbird for Android project, which itself is based on the long-running K-9 Mail codebase. Upstream architecture, source comments, copyright notices, and documentation remain where they are needed for attribution and compatibility. Upstream names and marks are not the KJBMail product name; references in `legacy`, package names, module names, APIs, schemas, and copyright/license notices are retained intentionally.
+
+KJBMail is licensed under the [Apache License 2.0](LICENSE). The [NOTICE](NOTICE) file retains required upstream attribution, including K-9 Mail and Android Open Source Project copyright notices. Apache licensing does not grant permission to use Thunderbird, K-9 Mail, Mozilla, or other upstream trademarks as KJBMail branding.
 
 ## Contributing
 
-We welcome contributions from everyone.
-
-- Development: Have you done a little bit of Kotlin? The [CONTRIBUTING](docs/CONTRIBUTING.md) guide will help you get started
-- Translations: Do you speak a language aside from English? [Translating is easy](https://hosted.weblate.org/projects/thunderbird/thunderbird-android/) and just takes a few minutes for your first success.
-- We have [a number of other contribution opportunities](https://blog.thunderbird.net/2024/09/contribute-to-thunderbird-for-android/) available.
-- Thunderbird is supported solely by financial contributions from users like you. [Make a financial contribution today](https://www.thunderbird.net/donate/mobile/?form=tfa)!
-- Make sure to check out the [Mozilla Community Participation Guidelines](https://www.mozilla.org/about/governance/policies/participation/).
-
-### Engineering Process
-
-We use a structured engineering process to propose, decide, and deliver technical changes. This includes:
-- [Requests for Comments (RFCs)](docs/engineering/rfcs/README.md) for technical direction.
-- [Technical Designs](docs/engineering/technical-designs/README.md) for implementation details.
-- [Architecture Decision Records (ADRs)](docs/engineering/adr/README.md) for durable architectural decisions.
-
-You can find more information in the [`docs/engineering`](docs/engineering) directory.
-
-We encourage team members and contributors to read through our engineering documentation to understand the
-processes and decisions that have shaped this project so far.
-
-## K-9 Mail
-
-In June 2022, [K-9 Mail joined the Thunderbird family](https://k9mail.app/2022/06/13/K-9-Mail-and-Thunderbird.html)
-as the foundation for Thunderbird on Android. Since then, we’ve been updating both apps to give
-users the same solid experience, so it’s normal to notice that K-9 Mail and Thunderbird look and
-feel nearly identical. They’re built on the same code, and that’s intentional. You'll notice some
-features are selectively enabled for Thunderbird as opposed to K-9 Mail, usually when they are
-simply a better fit for Thunderbird (like the import from K-9 functionality).
-
-If you prefer the robot dog and would like to keep K-9 Mail around, you can find it here:
-
-- [K-9 Mail on Google Play](https://play.google.com/store/apps/details?id=com.fsck.k9&utm_source=thunderbird-android-github&utm_campaign=download-section)
-- [K-9 Mail on F-Droid](https://f-droid.org/packages/com.fsck.k9/)
-- [K-9 Mail on Obtainium](https://obtainium.imranr.dev/) (use `K-9 Mail` as filter, see [notes](#download) above)
-
-## Forking
-
-If you want to use a fork of this project please ensure that you replace the OAuth client setup in the `app-k9mail/src/{debug,release}/kotlin/app/k9mail/auth/K9OAuthConfigurationFactory.kt` and `app-thunderbird/src/{debug,daily,beta,release}/kotlin/net/thunderbird/android/auth/TbOAuthConfigurationFactory.kt` with your own OAuth client setup and ensure that the `redirectUri` is different to the one used in the main project. This is to prevent conflicts with the main app when both are installed on the same device.
-
-## License
-
-Thunderbird for Android is licensed under the [Apache License, Version 2.0](LICENSE).
+Read [docs/CONTRIBUTING.md](docs/CONTRIBUTING.md), follow the repository's Kotlin and Android conventions, and open changes in the KJBMail issue tracker. Please avoid unrelated renames of package, namespace, module, or API identifiers.

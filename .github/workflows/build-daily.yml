@@ -11,7 +11,8 @@ permissions:
 
 jobs:
   build-daily:
-    if: ${{ github.repository_owner == 'thunderbird' }}
+    # Upstream-only publishing workflow; KJBMail remains source-only.
+    if: ${{ false && github.repository_owner == 'thunderbird' }}
     uses: ./.github/workflows/shippable_builds.yml
     secrets: inherit
     permissions:

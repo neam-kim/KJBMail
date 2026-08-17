@@ -13,7 +13,7 @@ android {
     }
 
     defaultConfig {
-        buildConfigField("String", "CLIENT_INFO_APP_NAME", "\"KJB Mail\"")
+        buildConfigField("String", "CLIENT_INFO_APP_NAME", "\"KJBMail\"")
         buildConfigField("String", "GLEAN_RELEASE_CHANNEL", "null")
         buildConfigField("int", "VERSION_CODE", "4")
         buildConfigField("String", "VERSION_NAME", "\"23.0\"")
